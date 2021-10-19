@@ -1,0 +1,42 @@
+<clr-tabs>
+
+    <clr-tab>
+        <button clrTabLink>COVID-19</button>
+        <clr-tab-content *clrIfActive="false">
+            <br>
+            <h1 class="centerGraphics">Información sobre el COVID-19</h1>
+            <h3 style="text-align: center;">La informacion colocada en esta página no se encuentra actualizada, por lo tanto si necesitas acceder a información de ultima mano visita: <br>
+                <a href="https://github.com/LiveCoronaDetector/livecod">Live Corona Detector</a>
+            </h3>
+        </clr-tab-content>
+    </clr-tab>
+
+    <clr-tab>
+        <button clrTabLink>Estadística Mundial</button>
+        <clr-tab-content *clrIfActive="false">
+            <br>
+            <h1 class="centerGraphics">Información sobre el COVID-19</h1>
+            <button style="position: absolute; right: 0;" class="btn btn-primary">Ver informe detallado</button>
+            <div class="centerGraphics">
+                <ngx-charts-bar-vertical [animations]="animations" [showDataLabel]="showDataLabel" [legendTitle]="legendTitle" [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </div>
+        </clr-tab-content>
+    </clr-tab>
+
+    <clr-tab *ngFor="let country of countries">
+        <button (click)="getResumeByCountry(country.iso2Code)" clrTabLink>{{country.countryName}}</button>
+        <clr-tab-content *clrIfActive="false">
+            <br>
+            <h1 class="centerGraphics">Información sobre el COVID-19</h1>
+            <button (click)="getDetailByCountry(country)" style="position: absolute; right: 0;" class="btn btn-primary">Ver informe detallado</button>
+            <div class="centerGraphics">
+                <ngx-charts-bar-vertical [animations]="animations" [showDataLabel]="showDataLabel" [legendTitle]="legendTitle" [view]="view" [scheme]="colorScheme" [results]="countryResumeInfo" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </div>
+        </clr-tab-content>
+    </clr-tab>
+
+</clr-tabs>
