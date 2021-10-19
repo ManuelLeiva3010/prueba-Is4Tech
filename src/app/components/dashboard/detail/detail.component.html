@@ -1,0 +1,35 @@
+<caption class="center">
+    <h1>{{country}}</h1>
+    <br>
+</caption>
+
+<form clrForm>
+    <clr-date-container>
+        <label>Busqueda por fecha</label>
+        <input (clrDateChange)="dateChange($event)" clrDate placeholder="DD/MM/YYYY" name="today" [(ngModel)]="date" />
+    </clr-date-container>
+    <button *ngIf="ascendente" (click)="orderByDateAsc(true)" class="btn btn-primary">Fecha ascendente</button>
+    <button *ngIf="!ascendente" (click)="orderByDateAsc(false)" class="btn btn-primary">Fecha descendente</button>
+</form>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Confirmados</th>
+            <th>Fallecidos</th>
+            <th>Recuperados</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of completeData ">
+            <td>{{row.date | date:'dd/MM/yyyy'}}</td>
+            <td>{{row.confirmed}}</td>
+            <td>{{row.deaths}}</td>
+            <td>{{row.recovered}}</td>
+        </tr>
+
+    </tbody>
+</table>
