@@ -215,3 +215,11 @@ input[type=submit] {
   background: #4aaaa5;
   border: 0 none;
 }
+
+
+@media only screen and (max-width: 649px) {
+  .auth-image {
+    width: 100%;
+    height: auto;
+  }
+}
