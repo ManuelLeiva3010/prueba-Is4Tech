@@ -6,6 +6,8 @@
                 <span class="title">Project Clarity</span>
             </a>
         </div>
+        <button (click)="openModalFunction()" style="position: absolute; right: 0;"
+            class="btn btn-primary">Suscripción</button>
     </header>
     <div class="content-container">
         <div class="content-area">
@@ -13,3 +15,84 @@
         </div>
     </div>
 </div>
+
+<!-- Código para el modal -->
+<clr-modal [(clrModalOpen)]="openModal">
+
+    <h3 class="modal-title">Registro Para Usuarios</h3>
+    <div class="modal-body">
+
+        <!-- Formulario para gguardar nombre fecha de nacimiento correo electronico y al darle aceptar mostrar pop Up que mu8estre esa informacion y diga -->
+        <!-- Muchas gracias “nombre ingresado” por suscribirte a nuestro servicio. Recibirás información al correo “correo ingresado”.
+ -->
+        <form #formL="ngForm" class="clr-form clr-form-horizontal">
+
+            <div class="clr-form-control">
+                <label for="name" class="clr-control-label">Nombre completo</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input name="name" required placeholder="Juan Manuel Perez Aldana" [(ngModel)]="name"
+                            class="clr-input" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="clr-form-control">
+                <label for="birthday" class="clr-control-label">Fecha de nacimiento</label>
+                <div class="clr-control-container">
+                    <clr-date-container>
+                        <input name="birthday" required clrDate placeholder="DD/MM/YYYY" [(ngModel)]="birthday" />
+                    </clr-date-container>
+                </div>
+            </div>
+
+            <div class="clr-form-control">
+                <label for="email" class="clr-control-label">Correo electónico</label>
+                <div class="clr-control-container">
+                    <input name="email" required placeholder="juan@micorreo.com" class="clr-input" [(ngModel)]="email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" (click)="openModal = false">Cancelar</button>
+                <button [disabled]="!formL.valid" type="button" class="btn btn-primary" (click)="saveUser()">Registrar
+                    usuario</button>
+            </div>
+        </form>
+    </div>
+</clr-modal>
+
+
+
+
+<clr-modal [(clrModalOpen)]="modalInfoSaved">
+
+    <h3 class="modal-title">Usuario Almacenado</h3>
+    <div class="modal-body">
+
+        <!-- Formulario para gguardar nombre fecha de nacimiento correo electronico y al darle aceptar mostrar pop Up que mu8estre esa informacion y diga -->
+        <!-- Muchas gracias “nombre ingresado” por suscribirte a nuestro servicio. Recibirás información al correo “correo ingresado”.
+ -->
+
+
+        <div class="clr-form-control">
+            <label for="name" class="clr-control-label">Nombre completo</label>
+            <label for="name" class="clr-control-label">{{name}}</label>
+        </div>
+
+        <div class="clr-form-control">
+            <label for="birthday" class="clr-control-label">Fecha de nacimiento</label>
+            <label for="name" class="clr-control-label">{{birthday | date:'dd/MM/yyyy'}}</label>
+        </div>
+
+        <div class="clr-form-control">
+            <label for="email" class="clr-control-label">Correo electónico</label>
+            <label for="name" class="clr-control-label">{{email}}</label>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" (click)="modalInfoSaved = false">Aceptar</button>
+        </div>
+    </div>
+</clr-modal>

@@ -5,11 +5,10 @@
 
 <form clrForm>
     <clr-date-container>
-        <label>Busqueda por fecha</label>
         <input (clrDateChange)="dateChange($event)" clrDate placeholder="DD/MM/YYYY" name="today" [(ngModel)]="date" />
     </clr-date-container>
-    <button *ngIf="ascendente" (click)="orderByDateAsc(true)" class="btn btn-primary">Fecha ascendente</button>
-    <button *ngIf="!ascendente" (click)="orderByDateAsc(false)" class="btn btn-primary">Fecha descendente</button>
+    <button *ngIf="ascendente" (click)="orderByDateAsc(true)" class="btn btn-success">Fecha ascendente</button>
+    <button *ngIf="!ascendente" (click)="orderByDateAsc(false)" class="btn btn-success">Fecha descendente</button>
 </form>
 
 
