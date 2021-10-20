@@ -10,9 +10,24 @@ export class AppComponent implements OnInit {
 
   title = 'covid';
 
+  public openModal: boolean = false;
+  public modalInfoSaved = false;
+  public birthday;
+  public name;
+  public email;
+  public formUser;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  openModalFunction() {
+    this.openModal = true
+  }
+
+  saveUser() {
+    this.openModal = false
+    this.modalInfoSaved = true;
+  }
 
 }
